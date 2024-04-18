@@ -1,0 +1,38 @@
+.footer {
+    margin-top: 67px;
+    margin-bottom: 60px;
+}
+
+.footer__description {
+    margin: 0;
+    font-family: 'Inter', arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.21;
+    text-align: left;
+    color: rgba(84, 84, 84, 1);
+}
+
+@media screen and (max-width:880px) {
+    .footer__description {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .footer {
+        margin-top: 48px;
+        margin-bottom: 36px;
+        
+        max-width: 320px;
+    }
+
+    .footer__description {
+        font-family: 'Inter', arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.21;
+        margin-left: 19px; 
+        max-width: 320px;
+    }
+}
