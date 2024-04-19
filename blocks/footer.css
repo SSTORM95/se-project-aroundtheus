@@ -28,10 +28,7 @@
     }
 
     .footer__description {
-        font-family: 'Inter', arial, sans-serif;
         font-size: 14px;
-        font-weight: 400;
-        line-height: 1.21;
         margin-left: 19px; 
         max-width: 320px;
     }

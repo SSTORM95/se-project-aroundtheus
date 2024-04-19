@@ -16,5 +16,4 @@ This project mainly covers the Responsive design for different screens. Implemen
 #### Project Links
 
 GithubPages:  https://sstorm95.github.io/se_project_aroundtheus/
-Project Video: https://drive.google.com/file/d/1R2FHnOSSwUIgVuxBFk7I-NNoH1VZn_Oz/view?usp=drive_link
-
+Project Video: https://drive.google.com/file/d/1R2FHnOSSwUIgVuxBFk7I-NNoH1VZn_Oz/view?usp=sharing
