@@ -1,0 +1,110 @@
+.modal {
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    padding: 0 19px;
+
+}
+
+.modal__opened {
+    display: flex;
+}
+
+.modal__container {
+    background-color: #fff;
+    padding: 36px;
+    margin:auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal__close {
+    background-image: url(../images/Close\ Icon.svg);
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    cursor: pointer;
+}
+
+.modal__heading {
+    color: black;
+    width: 330px;
+    height: 23px;
+    font-family: 'Inter', arial, sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 29.05px;
+    text-align: left;
+    margin: 0;
+}
+
+.modal__form {
+    margin-top: 54px;
+    display: flex;
+    flex-direction: column;
+    max-width: 358px;
+}
+
+.modal__form-title {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    height: 27.26px;
+    margin-bottom: 29.74px;
+}
+
+.modal__form-title::placeholder {
+    font-family: 'Inter', arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: left;
+}
+
+.modal__form-description {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    height: 27.26px;
+}
+
+.modal__form-description::placeholder {
+    font-family: 'Inter', arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: left;
+}
+
+.modal__button {
+    max-width: 358px;
+    height: 50.15px;
+    border-radius: 2px;
+    background-color: black;
+    color:#fff;
+    font-family: 'Inter', arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.78px;
+    text-align: center;
+    margin-top: 48px;
+    box-shadow: none;
+}
+
+@media screen and (max-width:550px) {
+
+    .modal__close {
+        height: 26px;
+        width: 26px;
+        right: 10px;
+    }
+}
+
