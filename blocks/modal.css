@@ -97,6 +97,7 @@
     text-align: center;
     margin-top: 48px;
     box-shadow: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width:550px) {
