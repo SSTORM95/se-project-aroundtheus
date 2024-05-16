@@ -42,6 +42,10 @@ const profileDescriptionInput = document.querySelector("#profile-description-inp
 const profileEditForm = document.forms["edit-form"];
 const cardListEl = document.querySelector(".gallery__cards");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
+const imageModal = document.querySelector("#image-popup-modal");
+const imageModalCloseButton = imageModal.querySelector("#modal-close-button");
+const imageModalImg = imageModal.querySelector(".modal__image");
+const imageModalTitle = imageModal.querySelector(".modal__image_caption");
 
 
 // Function //
@@ -57,6 +61,7 @@ function getCardElement(data) {
     const cardTitleEl = cardElement.querySelector('.card__description-title');
     const likeBtn = cardElement.querySelector("#card-like-button");
     const deleteBtn = cardElement.querySelector("#card-trash-button");
+    const cardImage = cardElement.querySelector(".card__image");
 
     deleteBtn.addEventListener("click", () => {
         cardElement.remove();
@@ -65,6 +70,8 @@ function getCardElement(data) {
     likeBtn.addEventListener("click", () => {
         likeBtn.classList.toggle("card__like-button_active");
     });
+
+    cardImage.addEventListener("click", () => showImage(data))
 
     cardTitleEl.textContent = data.name;
     cardImageEl.src = data.link;
@@ -79,6 +86,12 @@ function openModal(modal) {
 function renderCard(data, cardListEl) {
     const cardElement = getCardElement(data);
     cardListEl.prepend(cardElement);
+}
+
+function showImage(data) {
+    imageModalImg.src = data.link;
+    imageModalTitle.textContent = data.name;
+    openModal(imageModal);
 }
 
 // Event handlers // 
@@ -111,6 +124,7 @@ addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
 
 profileModalCLoseButton.addEventListener("click", () => closePopUp(profileEditModal));
 addCardModalCLoseButton.addEventListener("click", () => closePopUp(addCardModal));
+imageModalCloseButton.addEventListener("click", () => closePopUp(imageModal));
 
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);

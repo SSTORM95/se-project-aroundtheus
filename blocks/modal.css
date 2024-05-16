@@ -85,6 +85,27 @@
     cursor: pointer;
 }
 
+.modal__image{
+    max-height: 540px;
+}
+
+.modal__content_type_image{
+    max-width: 75vw;
+    max-height: 75vh;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    padding: 0;
+    margin: 90px auto;
+} 
+
+.modal__image_caption {
+    color: #fff;
+    font-size: 12px;
+    margin: 0;
+    margin-top: 10px;
+}
+
 @media screen and (max-width:550px) {
     .modal {
         padding: 0 19px;
@@ -126,6 +147,17 @@
         line-height: 16.94px;
         text-align: center;
 
+    }
+
+    .modal__image{
+        max-height: 299px;
+        max-width: 240px;
+        padding: 0;
+    }
+
+    .modal__content_type_image{
+        padding: 0;
+        max-width: 240px;
     }
 }
 
