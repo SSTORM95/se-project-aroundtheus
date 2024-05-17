@@ -47,7 +47,7 @@
                 <form id="edit-form" class="modal__form">
                     <input type="text" name="title" class="modal__input" placeholder="Name" id="profile-title-input">
                     <input type="text" name="description" class="modal__input" placeholder="Description" id="profile-description-input">
-                    <button class="modal__button">Save</button>
+                    <button class="modal__button" type="submit">Save</button>
                 </form>
             </div>
         </div>
@@ -55,12 +55,12 @@
 <!-- add modal -->
         <div class="modal" id="card-add-modal">
             <div class="modal__container">
-                <button class="modal__close" id="modal-close-button"></button>
-                    <p class="modal__heading">New Place</p>
+                <button class="modal__close" id="modal-close-button" type="button"></button>
+                    <h2 class="modal__heading">New Place</h2>
                 <form id="add-form" class="modal__form">
-                    <input type="text" name="title" class="modal__input" placeholder="Title" id="card-title-input">
-                    <input type="text" name="link" class="modal__input" placeholder="Image link" id="card-link-input">
-                    <button class="modal__button">Create</button>
+                    <input type="text" name="title" class="modal__input" placeholder="Title" id="card-title-input" required>
+                    <input type="text" name="link" class="modal__input" placeholder="Image link" id="card-link-input" required>
+                    <button class="modal__button" type="submit">Create</button>
                 </form>
             </div>
         </div>
@@ -68,9 +68,9 @@
 <!-- image modal -->
         <div class="modal" id="image-popup-modal">
             <div class="modal__container modal__content_type_image">
-                <button class="modal__close" id="modal-close-button"></button>
+                <button class="modal__close" id="modal-close-button" type="button"></button>
                 <img src="" alt="" class="modal__image">
-                <p class="modal__image_caption"></p>
+                <h4 class="modal__image_caption"></h4>
             </div>
         </div>
 
@@ -84,6 +84,6 @@
             </li>
         </template>
 
-        <script src="./scripts/index.js"></script>
+        <script src="./scripts/index.js" ></script>
     </body>
 </html>

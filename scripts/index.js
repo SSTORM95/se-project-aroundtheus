@@ -91,7 +91,13 @@ function renderCard(data, cardListEl) {
 function showImage(data) {
     imageModalImg.src = data.link;
     imageModalTitle.textContent = data.name;
+    imageModalImg.alt = data.name;
     openModal(imageModal);
+}
+
+function fillProfileForm() {
+    profileTitleInput.value = profileTitle.textContent;
+    profileDescriptionInput.value = profileDescription.textContent;
 }
 
 // Event handlers // 
@@ -109,15 +115,15 @@ function handleAddCardSubmit(e){
     const link = cardLinkInput.value;
     renderCard({name, link}, cardListEl);
     closePopUp(addCardModal);
+    document.querySelector("#add-form").reset();
  }
 
 // Event listener//
 
 profileEditBtn.addEventListener("click", () => {
-    profileTitleInput.value = profileTitle.textContent;
-    profileDescriptionInput.value = profileDescription.textContent;
-    
-    openModal(profileEditModal)});
+    fillProfileForm();
+    openModal(profileEditModal);
+});
 
 addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
 
