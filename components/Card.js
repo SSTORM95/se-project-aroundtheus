@@ -7,15 +7,15 @@ export default class Card {
     }
 
     _setEventListener(){
-    this._cardElement.querySelector("#card-like-button").addEventListener('click', () => {
-        this._handleLikeIcon()
+        this._likeBtn = this._cardElement.querySelector("#card-like-button");
+        this._trashBtn = this._cardElement.querySelector("#card-trash-button");
+        this._cardImg = this._cardElement.querySelector(".card__image");
 
-    });
-    this._cardElement.querySelector("#card-trash-button").addEventListener('click', () => {
-        this._handleDeleteCard()
-    })
+    this._likeBtn.addEventListener('click', this._handleLikeIcon);
 
-    this._cardElement.querySelector(".card__image").addEventListener('click', () => (this._handleImageClick(this)));
+    this._trashBtn.addEventListener('click', this._handleDeleteCard);
+
+    this._cardImg.addEventListener('click', () => (this._handleImageClick(this)));
     }
     
     _handleImageClick(data){
@@ -26,11 +26,11 @@ export default class Card {
         openModal(this._imageModal);
     }
 
-    _handleLikeIcon() {
-        this._cardElement.querySelector('#card-like-button').classList.toggle("card__like-button_active");
+    _handleLikeIcon = () => {
+        this._likeBtn.classList.toggle("card__like-button_active");
     }
 
-    _handleDeleteCard() {
+    _handleDeleteCard = () => {
         this._cardElement.remove();
         this._cardElement = null;
     }
@@ -38,10 +38,12 @@ export default class Card {
 
     getCard() {
         this._cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
+      
        
         this._setEventListener();
 
         this._cardElement.querySelector(".card__image").src = this._link;
+        this._cardElement.querySelector(".card__image").alt = this._name;
         this._cardElement.querySelector(".card__description-title").textContent = this._name;
 
         return this._cardElement;

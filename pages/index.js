@@ -28,13 +28,6 @@ const initialCards = [
     },
 ]
 
-const cardData = {
-    name:'Vanoise National Park',
-    link:'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg',
-}
-
-const card = new Card(cardData, "#card-template");
-card.getCard()
 // Elements //
 
 const modal = document.querySelectorAll(".modal");
@@ -68,47 +61,26 @@ function closePopUp(modal){
     modal.removeEventListener("mousedown", handleClickExit);
 }
 
-function getCardElement(data) {
-
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardImageEl = cardElement.querySelector('.card__image');
-    const cardTitleEl = cardElement.querySelector('.card__description-title');
-    const likeBtn = cardElement.querySelector("#card-like-button");
-    const deleteBtn = cardElement.querySelector("#card-trash-button");
-    const cardImage = cardElement.querySelector(".card__image");
-
-    deleteBtn.addEventListener("click", () => {
-        cardElement.remove();
-    });
-
-    likeBtn.addEventListener("click", () => {
-        likeBtn.classList.toggle("card__like-button_active");
-    });
-
-    cardImage.addEventListener("click", () => showImage(data))
-
-    cardTitleEl.textContent = data.name;
-    cardImageEl.src = data.link;
-    cardImageEl.alt = data.name;
-    return cardElement;
+function createCard(data) {
+    const card = new Card(data, "#card-template", handleImageClick);
+    return card.getCard();
 }
 
 function openModal(modal) {
     modal.classList.add("modal_opened");
     document.addEventListener("keydown", handleEscExit);
     modal.addEventListener("mousedown", handleClickExit);
-    addFormValidator.disableBtn();
 }
 
 function renderCard(data, cardListEl) {
-    const cardElement = getCardElement(data);
+    const cardElement = createCard(data);
     cardListEl.prepend(cardElement);
 }
 
-function showImage(data) {
+function handleImageClick(data) {
     imageModalImg.src = data.link;
-    imageModalTitle.textContent = data.name;
     imageModalImg.alt = data.name;
+    imageModalTitle.textContent = data.name;
     openModal(imageModal);
 }
 
@@ -146,6 +118,7 @@ function handleAddCardSubmit(e){
     renderCard({name, link}, cardListEl);
     closePopUp(addCardModal);
     document.querySelector("#add-form").reset();
+    addFormValidator.disableBtn();
  }
 
 // Event listener//
