@@ -1,3 +1,6 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [ 
     {
         name:'Yosemite Valley',
@@ -24,6 +27,14 @@ const initialCards = [
         link:'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg',
     },
 ]
+
+const cardData = {
+    name:'Vanoise National Park',
+    link:'https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg',
+}
+
+const card = new Card(cardData, "#card-template");
+card.getCard()
 // Elements //
 
 const modal = document.querySelectorAll(".modal");
@@ -86,6 +97,7 @@ function openModal(modal) {
     modal.classList.add("modal_opened");
     document.addEventListener("keydown", handleEscExit);
     modal.addEventListener("mousedown", handleClickExit);
+    addFormValidator.disableBtn();
 }
 
 function renderCard(data, cardListEl) {
@@ -156,3 +168,16 @@ addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach((data) => renderCard(data, cardListEl));
 
+const validationSettings = {
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible"
+}
+
+const editFormValidator = new FormValidator(validationSettings, profileEditForm);
+editFormValidator.enableValidation();
+
+const addFormValidator = new FormValidator(validationSettings, addCardForm);
+addFormValidator.enableValidation();
