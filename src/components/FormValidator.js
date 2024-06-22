@@ -36,11 +36,14 @@ export default class FormValidator {
         errorMessageEl.classList.add(this._errorClass);
     }
 
-    _hideInputError(inputEl){
+    hideInputError(inputEl){
         const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`);
 
         inputEl.classList.remove(this._inputErrorClass);
+        if (errorMessageEl){
         errorMessageEl.textContent = '';
+        errorMessageEl.classList.remove(this._inputErrorClass);
+        }
     }
 
     _hasInvalidInput(){
@@ -51,7 +54,7 @@ export default class FormValidator {
         if(!inputEl.validity.valid) {
             this._showInputError(inputEl);
            } else {
-               this._hideInputError(inputEl);
+               this.hideInputError(inputEl);
            }
     }
 

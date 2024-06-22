@@ -7,19 +7,18 @@
         />
         <meta content="ie=edge" http-equiv="X-UA-Compatible">
         <title>Around The U.S</title>
-        <link rel="stylesheet" href="./pages/index.css">
         <link rel="shortcut icon" href="./favicon.ico">
     </head>
     <body class="page">
         <div class="page__content">
             <header class="header page__section">
                 <img class="header__image" 
-                src="./images/logo.svg" 
+                src="<%=require('./images/logo.svg')%>"
                 alt="Around The U.S logo">
             </header>
             <main class="content">
                 <section class="profile page__section">
-                    <img src="./images/jacques-cousteau.jpeg" 
+                    <img src="<%=require('./images/jacques-cousteau.jpeg')%>" 
                     alt="Avatar" 
                     class="profile__image">
                     <div class="profile__info">
@@ -96,6 +95,5 @@
             </li>
         </template>
 
-        <script type="module" src="./pages/index.js" defer></script>
     </body>
 </html>
