@@ -1,3 +1,5 @@
+import Popup from "./Popup";
+
 export default class Card {
     constructor(data, cardSelector, handleImageClick){
        this._name = data.name;
@@ -23,7 +25,7 @@ export default class Card {
         this._imageModalImg.src = data.link;
         this._imageModalTitle.textContent = data.name;
         this._imageModalImg.alt = data.name;
-        openModal(this._imageModal);
+        open(this._imageModal);
     }
 
     _handleLikeIcon = () => {

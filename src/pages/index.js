@@ -50,7 +50,8 @@ const profileEditPopup = new PopupWithForm(
     (formData) => {
       const { name, description } = formData;
       userInfo.setUserInfo({ name, description });
-      profileEditPopup.close();
+      profileEditPopup.open();
+      editFormValidator.toggleButtonState()
     }
   );
 profileEditPopup.setEventListeners();
@@ -59,8 +60,8 @@ const addCardPopup = new PopupWithForm("#card-add-modal", (formData) => {
     const name = formData.title;
     const link = formData.url;
     renderCard({ name, link });
-    addCardPopup.close();
-    profileEditValidator.enableValidation();
+    addCardPopup.open();
+    addFormValidator.toggleButtonState();
   });
 addCardPopup.setEventListeners();
   
@@ -92,7 +93,7 @@ function createCard(data) {
 
 
 function handleImageClick(name, link) {
- popupWithImage.open({name, link});
+ popupWithImage.open({ name, link });
 }
 
 // Event listener//
