@@ -40,15 +40,15 @@ const userInfo = new UserInfo({
     descriptionSelector: ".profile__description",
   });
  
-  function handleProfileEditSubmit(UserData) {
+  function handleProfileEditSubmit(userData) {
     profileEditPopup.close();
-    userInfo.setUserInfo(UserData);
+    userInfo.setUserInfo(userData);
   }
 
   function handleCardSubmit(data){
     const name = data.title;
-  const link = data.url;
-  cardSection.addItem({ link, name });
+    const link = data.url;
+    cardSection.addItem({ link, name });
     addFormValidator.toggleButtonState();
     addCardPopup.close();
   }

@@ -1,6 +1,6 @@
 import Popup from "./Popup";
 
-export default class Card {
+export default class Card{
     constructor(data, cardSelector, handleImageClick){
        this._name = data.name;
        this._link = data.link;
