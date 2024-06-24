@@ -7,7 +7,7 @@ import Section from "../components/Section.js";
 import './index.css';
 import { validationSettings } from "../utils/constants.js";
 import { initialCards } from "../utils/constants.js";
-
+import Popup from "../components/Popup.js";
 
 
 // Elements //
@@ -39,30 +39,40 @@ const userInfo = new UserInfo({
     nameSelector: ".profile__title",
     descriptionSelector: ".profile__description",
   });
+ 
+  function handleProfileEditSubmit(UserData) {
+    profileEditPopup.close();
+    userInfo.setUserInfo(UserData);
+  }
+
+  function handleCardSubmit(data){
+    const name = data.title;
+  const link = data.url;
+  cardSection.addItem({ link, name });
+    addFormValidator.toggleButtonState();
+    addCardPopup.close();
+  }
 
 // Pop Ups // 
+
 
 const popupWithImage = new PopupWithImage("#image-popup-modal");
 popupWithImage.setEventListeners();
 
+function handleImageClick(data) {
+    popupWithImage.open(data);
+   }
+
 const profileEditPopup = new PopupWithForm(
     "#profile-edit-modal",
-    (formData) => {
-      const { name, description } = formData;
-      userInfo.setUserInfo({ name, description });
-      profileEditPopup.open();
-      editFormValidator.toggleButtonState()
-    }
+    handleProfileEditSubmit
   );
 profileEditPopup.setEventListeners();
 
-const addCardPopup = new PopupWithForm("#card-add-modal", (formData) => {
-    const name = formData.title;
-    const link = formData.url;
-    renderCard({ name, link });
-    addCardPopup.open();
-    addFormValidator.toggleButtonState();
-  });
+const addCardPopup = new PopupWithForm(
+    "#card-add-modal", 
+    handleCardSubmit
+  );
 addCardPopup.setEventListeners();
   
 // render //
@@ -82,9 +92,6 @@ function renderCard(data) {
     cardSection.addItem(card);
 }
 
-addNewCardBtn.addEventListener("click", () => {
-    addCardModal.open()
-})
 
 function createCard(data) {
     const card = new Card(data, "#card-template", handleImageClick);
@@ -92,19 +99,21 @@ function createCard(data) {
 }
 
 
-function handleImageClick(name, link) {
- popupWithImage.open({ name, link });
-}
+
 
 // Event listener//
 
 profileEditBtn.addEventListener("click", () => {
-    editFormValidator.hideInputError(profileEditForm);
-    const {name, description} = userInfo.getUserInfo();
-    profileTitleInput.value = name;
-    profileDescriptionInput.value = description;
-    profileEditModal.open();
+    editFormValidator.toggleButtonState();
+    const userData = userInfo.getUserInfo();
+    profileTitleInput.value = userData.name;
+    profileDescriptionInput.value = userData.description;
+    profileEditPopup.open();
 });
+
+addNewCardBtn.addEventListener("click", () => {
+    addCardPopup.open()
+})
 
 
 
