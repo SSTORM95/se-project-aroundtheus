@@ -68,10 +68,10 @@ popupWithImage.setEventListeners();
 function handleImageClick(card) {
   const mappedData = {
     link: card._link,
-    name: card._name
+    name: card._name,
   };
   popupWithImage.open(mappedData);
-  }
+}
    
 const profileEditPopup = new PopupWithForm(
     "#profile-edit-modal",
