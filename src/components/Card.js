@@ -1,9 +1,9 @@
-import Popup from "./Popup";
 
 export default class Card{
-    constructor(data, cardSelector, handleImageClick){
-       this._name = data.name;
-       this._link = data.link;
+    constructor({ link, name }, cardSelector, handleImageClick){
+       
+       this._name = name;
+       this._link = link;
        this._cardSelector = cardSelector;
        this._handleImageClick = handleImageClick;
     }
@@ -20,11 +20,11 @@ export default class Card{
     this._cardImg.addEventListener('click', () => (this._handleImageClick(this)));
     }
     
-    _handleImageClick(data){
+    _handleImageClick({ link, name }){
         this._imageModal = this._cardElement.querySelector("#image-popup-modal");
-        this._imageModalImg.src = data.link;
-        this._imageModalTitle.textContent = data.name;
-        this._imageModalImg.alt = data.name;
+        this._imageModalImg.src = link;
+        this._imageModalTitle.textContent = name;
+        this._imageModalImg.alt = name;
         open(this._imageModal);
     }
 
@@ -39,6 +39,7 @@ export default class Card{
 
 
     getCard() {
+        
         this._cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
       
        

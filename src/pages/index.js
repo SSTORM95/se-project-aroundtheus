@@ -47,8 +47,14 @@ const userInfo = new UserInfo({
 
   function handleCardSubmit(data){
     const name = data.title;
-    const link = data.url;
-    cardSection.addItem({ link, name });
+    const link = data.link;
+    
+    const newCardData = { link, name }; 
+  
+
+    const newCard = createCard(newCardData); 
+    cardSection.addItem(newCard);
+    
     addFormValidator.toggleButtonState();
     addCardPopup.close();
   }
@@ -59,10 +65,14 @@ const userInfo = new UserInfo({
 const popupWithImage = new PopupWithImage("#image-popup-modal");
 popupWithImage.setEventListeners();
 
-function handleImageClick(data) {
-    popupWithImage.open(data);
-   }
-
+function handleImageClick(card) {
+  const mappedData = {
+    link: card._link,
+    name: card._name
+  };
+  popupWithImage.open(mappedData);
+  }
+   
 const profileEditPopup = new PopupWithForm(
     "#profile-edit-modal",
     handleProfileEditSubmit
@@ -79,22 +89,23 @@ addCardPopup.setEventListeners();
 
 const cardSection = new Section (
     {items: initialCards,
-        renderer : (data) => {
-            renderCard(data);
+        renderer : ({ link, name }) => {
+            renderCard({ link, name });
         }
     },
-    ".gallery__cards"
+    ".gallery__cards" 
 )
 cardSection.renderItems();
 
-function renderCard(data) {
-    const card = createCard(data);
+function renderCard({ link, name }) {
+    const card = createCard({ link, name });
     cardSection.addItem(card);
 }
 
 
 function createCard(data) {
-    const card = new Card(data, "#card-template", handleImageClick);
+  
+    const card = new Card({ link: data.link, name: data.name }, "#card-template", handleImageClick);
     return card.getCard();
 }
 
